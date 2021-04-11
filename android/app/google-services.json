@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "618446189039",
+    "project_id": "wallzer-42981",
+    "storage_bucket": "wallzer-42981.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618446189039:android:36c1074448718be984c61a",
+        "android_client_info": {
+          "package_name": "com.shanu.wall_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618446189039-3efvuukrcj6ptbuoe5tm8mjrb4ecmair.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVLcFXxCDsX-4Cf85Hn4dAets30RcM4H4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "618446189039-3efvuukrcj6ptbuoe5tm8mjrb4ecmair.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
