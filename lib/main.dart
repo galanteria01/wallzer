@@ -1,14 +1,12 @@
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:wall_application/home.dart';
 import 'package:wall_application/loading.dart';
-import 'package:wall_application/signup.dart';
 import 'package:wall_application/something_went_wrong.dart';
 import 'package:wall_application/splash.dart';
 
 void main() {
+
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
     home: MyApp(),
@@ -18,12 +16,14 @@ void main() {
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
+
 }
 
 class _MyAppState extends State<MyApp> {
 
   bool _initialized = false;
   bool _error = false;
+
   void initialiseFlutterFire() async {
     try{
       await Firebase.initializeApp();
@@ -41,6 +41,16 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     initialiseFlutterFire();
     super.initState();
+  }
+
+  @override
+  void setState(fn) {
+    // FirebaseAuth.instance.authStateChanges().listen((User user) {
+    //   if(user != null){
+    //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
+    //   }
+    // });
+    super.setState(fn);
   }
 
   @override

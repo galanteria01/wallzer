@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wall_application/auth.dart';
+import 'package:wall_application/home.dart';
+import 'package:wall_application/signup.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -12,17 +15,17 @@ class _LoginState extends State<Login> {
   TextEditingController _passController = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  void handleSubmit() async {
-    try{
-      UserCredential userCredential = await auth.signInWithEmailAndPassword(email: _emailController.text, password: _passController.text);
-      print(userCredential);
-    } on FirebaseAuthException catch (e) {
-      if(e.code == "user-not-found"){
-        SnackBar(content: Text("User isn't found in database"),);
-      }else if(e.code == "wrong-password"){
-        SnackBar(content: Text("Wrong password provided"),);
-      }
+  void login() async{
+    UserCredential user = await handleLogin(_emailController.text, _passController.text);
+    if(user != null){
+      _emailController.text = "";
+      _passController.text = "";
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
     }
+  }
+
+  void registerNow() {
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Signup()));
   }
 
   @override
@@ -37,6 +40,7 @@ class _LoginState extends State<Login> {
     return SafeArea(
       child: Container(
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           body: Padding(
             padding: const EdgeInsets.all(24.0),
             child: Column(
@@ -57,38 +61,40 @@ class _LoginState extends State<Login> {
                     TextFormField(
                       controller: _emailController,
                       decoration: InputDecoration(
-                          labelText: 'Full name',
+                          labelText: 'Email Address',
                           border: OutlineInputBorder(),
                           prefixIcon: Icon(Icons.drive_file_rename_outline)
                       ),
                     ),
                   ],
                 ),
-
+                SizedBox(height: 32,),
                 Column(
                   children: [
                     TextFormField(
                       controller: _passController,
                       obscureText: true,
                       decoration: InputDecoration(
-                          labelText: 'Full name',
+                          labelText: 'Password',
                           border: OutlineInputBorder(),
-                          prefixIcon: Icon(Icons.drive_file_rename_outline)
+                          prefixIcon: Icon(Icons.lock)
                       ),
                     ),
                   ],
                 ),
-
-                ElevatedButton(
-                    onPressed: handleSubmit,
-                    child: Text("Login")
+                SizedBox(height: 48,),
+                ElevatedButton.icon(
+                    onPressed: login,
+                    icon: Icon(Icons.login),
+                    label: Text("Login")
                 ),
+                SizedBox(height: 6,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("New?"),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: registerNow,
                         child: Text("Register now!")
                     )
                   ],

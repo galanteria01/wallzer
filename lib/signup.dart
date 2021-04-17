@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wall_application/home.dart';
+
+import 'auth.dart';
 
 class Signup extends StatefulWidget {
   @override
@@ -13,17 +16,12 @@ class _SignupState extends State<Signup> {
   TextEditingController _passController = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  handleSignup() async {
-    try{
-      UserCredential userCredential = await auth.createUserWithEmailAndPassword(email: _emailController.text, password: _passController.text);
-    } on FirebaseAuthException catch(e) {
-      if(e.code == "weak-password"){
-        SnackBar(content: Text("The password is weak"),);
-      }else if (e.code == "email-already-in-use"){
-        SnackBar(content: Text("Consider logging in"),);
-      }
-    } catch(e) {
-      SnackBar(content: Text(e.code));
+  void signup () async {
+    UserCredential user = await handleSignup(_emailController.text, _passController.text);
+    if(user!=null){
+      _emailController.text = "";
+      _passController.text = "";
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
     }
   }
 
@@ -74,7 +72,7 @@ class _SignupState extends State<Signup> {
                 ),
                 SizedBox(height: 64,),
                 ElevatedButton.icon(
-                    onPressed: handleSignup,
+                    onPressed: signup,
                     label: Text("Sign up"),
                     icon: Icon(Icons.app_registration),
                   style: ButtonStyle(

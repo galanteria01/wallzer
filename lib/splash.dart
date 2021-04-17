@@ -19,10 +19,16 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     User user = checkUser();
-    print(user);
+    // FirebaseAuth.instance.authStateChanges().listen((User user) {
+    //   if(user == null){
+    //     Login();
+    //   }else{
+    //     Home();
+    //   }
+    // });
     Timer(
       Duration(milliseconds: 2000),
-        () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => user!=null ? Home() : Login()))
+        () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => user != null ? Home() : Login()))
     );
   }
 
