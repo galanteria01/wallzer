@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wall_application/home.dart';
 
-import 'auth.dart';
+import 'firebase/auth.dart';
 
 class Signup extends StatefulWidget {
   @override

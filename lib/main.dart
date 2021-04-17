@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:wall_application/loading.dart';
 import 'package:wall_application/something_went_wrong.dart';
 import 'package:wall_application/splash.dart';
+import 'package:wall_application/walls_list.dart';
 
 void main() {
 
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
-    home: MyApp(),
+    home: WallsList(),
   ));
 }
 

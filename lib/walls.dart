@@ -1,6 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wall_application/cards/category_card.dart';
+
+import 'firebase/storage.dart';
 
 class Walls extends StatefulWidget {
   @override
@@ -8,21 +9,31 @@ class Walls extends StatefulWidget {
 }
 
 class _WallsState extends State<Walls> {
+  String imagePath;
 
-  handleSignout() {
-    FirebaseAuth.instance.signOut();
-    Navigator.pop(context);
-}
+  Future<String> downloadURLExample() async {
+    return await storage
+        .ref('avengers/image1.jpg')
+        .getDownloadURL();
+  }
+
+  @override
+  void initState() {
+    imagePath = downloadURLExample() as String;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Center(
-          child: TextButton(
-            child: Text("Signout"),
-            onPressed: handleSignout,
+        child: Scaffold(
+          body: Column(
+            children: [
+              CategoryCard(title: "Cars", imagePath: 'images/background.jpg',),
+              CategoryCard(title: "Avengers", imagePath: "images/avengers.jpg",),
+            ],
           ),
-        ),
+        )
     );
   }
 }

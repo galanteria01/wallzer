@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wall_application/auth.dart';
+import 'file:///C:/Users/ACER/AndroidStudioProjects/wall_application/lib/firebase/auth.dart';
 import 'package:wall_application/home.dart';
 import 'package:wall_application/signup.dart';
 

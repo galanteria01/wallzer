@@ -29,7 +29,6 @@ class _HomeState extends State<Home> {
                   icon: Icon(Icons.settings),
                 label: "Settings"
               )
-
             ],
           ),
         ),
