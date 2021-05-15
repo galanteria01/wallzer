@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class WallsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Material(
-        child: GridView.count(
-          // Create a grid with 2 columns. If you change the scrollDirection to
-          // horizontal, this produces 2 rows.
-          crossAxisCount: 2,
-          // Generate 100 widgets that display their index in the List.
-          children: List.generate(100, (index) {
-            return Center(
-              child: Image.asset("images/avengers.jpg"),
-            );
-          }),
-        ),
+        child: StaggeredGridView.countBuilder(
+          crossAxisCount: 4,
+          itemCount: 8,
+          itemBuilder: (BuildContext context, int index) => Image(
+            image: AssetImage('images/image1.jpg'),
+          ),
+          staggeredTileBuilder: (int index) =>
+          StaggeredTile.count(2, index.isEven ? 2 : 1),
+          mainAxisSpacing: 4.0,
+          crossAxisSpacing: 4.0,
+        )
       )
     );
   }

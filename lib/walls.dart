@@ -19,7 +19,6 @@ class _WallsState extends State<Walls> {
 
   @override
   void initState() {
-    imagePath = downloadURLExample() as String;
     super.initState();
   }
 

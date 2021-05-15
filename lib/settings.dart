@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:theme_provider/theme_provider.dart';
 import 'package:wall_application/login.dart';
 import 'firebase/auth.dart';
 
@@ -24,7 +25,9 @@ class _SettingsState extends State<Settings> {
         children: [
           ListTile(
             title: Text("Switch mode"),
-            onTap: () {},
+            onTap: () {
+              ThemeProvider.controllerOf(context).nextTheme();
+            },
             leading: Icon(Icons.wb_incandescent_outlined),
           ),
           ListTile(

@@ -1,16 +1,16 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:theme_provider/theme_provider.dart';
 import 'package:wall_application/loading.dart';
 import 'package:wall_application/something_went_wrong.dart';
 import 'package:wall_application/splash.dart';
-import 'package:wall_application/walls_list.dart';
 
 void main() {
 
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
-    home: WallsList(),
+    home: MyApp(),
   ));
 }
 
@@ -62,6 +62,21 @@ class _MyAppState extends State<MyApp> {
     if(!_initialized){
       return Loading();
     }
-    return Splash();
+    return ThemeProvider(
+      loadThemeOnInit: true,
+      saveThemesOnChange: true,
+      themes: [
+        AppTheme.dark(id: "dark_theme"),
+        AppTheme.light(id: "light_theme")
+      ],
+        child: ThemeConsumer(
+          child: Builder(
+            builder: (themeContext) => MaterialApp(
+              theme: ThemeProvider.themeOf(themeContext).data,
+              home: Splash(),
+            ),
+          ),
+        )
+    );
   }
 }

@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:theme_provider/theme_provider.dart';
 import 'package:wall_application/login.dart';
 
 import 'home.dart';
@@ -28,8 +29,8 @@ class _SplashState extends State<Splash> {
     // });
     Timer(
       Duration(milliseconds: 2000),
-        () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => user != null ? Home() : Login()))
-    );
+        () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ThemeConsumer(child: user != null ? Home() : Login()))
+    ));
   }
 
   User checkUser() {

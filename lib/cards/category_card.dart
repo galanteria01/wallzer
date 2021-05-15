@@ -6,16 +6,13 @@ class CategoryCard extends StatelessWidget {
   String title;
   CategoryCard({this.title,this.imagePath});
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
       child: SafeArea(
         child: Material(
           child: Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.fromLTRB(12.0, 5.0, 12.0, 5.0),
             child: Card(
               clipBehavior: Clip.antiAlias,
               child: Stack(
