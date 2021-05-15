@@ -37,12 +37,10 @@ class _SettingsState extends State<Settings> {
           ListTile(
             title: Text("Notifications"),
             leading: Icon(Icons.notifications),
-            onTap: signout,
           ),
           ListTile(
             title: Text("Feedback"),
             leading: Icon(Icons.feedback),
-            onTap: signout,
           ),
           ListTile(
             title: Text("Sign out"),

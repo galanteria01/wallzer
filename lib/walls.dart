@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wall_application/cards/category_card.dart';
+import 'package:wall_application/walls_list.dart';
 
 import 'firebase/storage.dart';
 
@@ -26,8 +27,17 @@ class _WallsState extends State<Walls> {
   Widget build(BuildContext context) {
     return Container(
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           body: Column(
             children: [
+              GestureDetector(
+                child: CategoryCard(title: "Avengers", imagePath: 'images/avengers.jpg',),
+                onTap: () => {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => WallsList()))
+                },
+              ),
               CategoryCard(title: "Cars", imagePath: 'images/background.jpg',),
               CategoryCard(title: "Avengers", imagePath: "images/avengers.jpg",),
             ],

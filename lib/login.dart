@@ -22,6 +22,8 @@ class _LoginState extends State<Login> {
       _emailController.text = "";
       _passController.text = "";
       Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+    }else{
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Email or password is wrong")));
     }
   }
 
@@ -43,15 +45,15 @@ class _LoginState extends State<Login> {
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           body: Padding(
-            padding: const EdgeInsets.all(24.0),
+            padding: const EdgeInsets.all(32.0),
             child: Column(
               children: [
                 Align(
                   child: Text(
                       "Login",
                     style: TextStyle(
-                      fontSize: 32.0,
-                      fontWeight: FontWeight.w600
+                      fontSize: 48.0,
+                      fontWeight: FontWeight.w500
                     ),
                   ),
                   alignment: Alignment.centerLeft,

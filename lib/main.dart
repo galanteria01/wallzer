@@ -10,6 +10,7 @@ void main() {
 
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     home: MyApp(),
   ));
 }
