@@ -18,6 +18,7 @@ class _HomeState extends State<Home> {
         child: Scaffold(
           body: _children[_index],
           bottomNavigationBar: BottomNavigationBar(
+
             onTap: onTabTapped,
             currentIndex: _index,
             items: [

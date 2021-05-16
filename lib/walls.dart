@@ -38,8 +38,13 @@ class _WallsState extends State<Walls> {
                       MaterialPageRoute(builder: (context) => WallsList()))
                 },
               ),
-              CategoryCard(title: "Cars", imagePath: 'images/background.jpg',),
-              CategoryCard(title: "Avengers", imagePath: "images/avengers.jpg",),
+              Scrollbar(
+                  child: ListView.builder(
+                      itemBuilder: (context, index){
+                        return CategoryCard(title: "Cars", imagePath: 'images/background.jpg',);
+                      }
+                  )
+              )
             ],
           ),
         )
